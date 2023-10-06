@@ -17,8 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function (){
-    return view('hello');
-});
+Route::get('/test', [\App\Http\Controllers\AboutController::class, 'index']);
+
+Route::resource('exercises', \App\Http\Controllers\ExerciseController::class);
 
 
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
